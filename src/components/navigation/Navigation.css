@@ -1,4 +1,21 @@
 #my-nav {
     position: fixed;
-    top:0;
+    top: 0;
+}
+
+.li-style {
+    list-style: none;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-around;
+    padding: 1em;
 }
