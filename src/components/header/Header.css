@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-image: linear-gradient(180deg, transparent, transparent 50%, black),
+    url("/public/img.png");
+    background-size: cover;
+    background-attachment: scroll, fixed;
+    min-height: 100vh;
+}
+
+.color-red {
+    color: #FF0000;
+}
