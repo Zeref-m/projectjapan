@@ -1,0 +1,23 @@
+.about_us{
+    height: 100vh;
+    background-color: #000000;
+}
+.text-block{
+    width: 800px;
+
+}
+.about-h1{
+    font-weight: 700;
+    font-size: 80px;
+    color: white;
+}
+.about-h3{
+    font-size: 45px;
+    font-weight: 700;
+    color:white;
+}
+.about-p{
+    font-size: 35px;
+    font-weight: 700;
+    color: white;
+}

@@ -1,4 +1,49 @@
 .gallery {
     min-height: 100vh;
-    background-color: grey;
+    background-color: rgb(0, 0, 0);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.a-in-block{
+    text-decoration: none;
+    width: 300px;
+    height: 410px;
+    color: white;
+}
+.main-text{
+    padding: 8em;
+    color: rgb(255, 255, 255);
+}
+.tour-blocks{
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+.tour-block{
+    width: 300px;
+    height: 410px;
+    background-color: #757575;
+    transition: 0.3s;
+}
+.tour-block:hover{
+    transform:scale(1.1);
+}
+.text-red{
+    color: #D43E3E;
+}
+.block-text{
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.text-align{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.align-items{
+    align-items: flex-end;
+}
+.more-tours{
+    justify-content: center;
+    margin-top: 5.5em;
 }

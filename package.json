@@ -13,9 +13,11 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "next": "^14.2.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "sass": "^1.77.8"
+    "next-auth": "^5.0.0-beta.20",
+    "react": "~canary",
+    "react-dom": "~canary",
+    "sass": "^1.77.8",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

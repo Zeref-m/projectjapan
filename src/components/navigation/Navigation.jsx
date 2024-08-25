@@ -5,13 +5,11 @@ export default function () {
     return (
         <nav id="my-nav" className="">
             <ul className="nav-flex">
-                <li className={"li-style"}><a href="">Gallery</a></li>
-                <li className={"li-style"}><a href="">About us</a></li>
-                <li className={"li-style"}><a href="">Home</a></li>
-                <li className={"li-style"}>
-                    <a href="">Tours</a>
-                </li>
-                <li className={"li-style"}><a href="">Contacts</a></li>
+                <a href="" className='a-nav'><li className={"li-style"}>Gallery</li></a>
+                <a href="" className='a-nav'><li className={"li-style"}>About us</li></a>
+                <a href="" className='a-nav'><li className={"li-style"}>Home</li></a>
+                <a href="" className='a-nav'><li className={"li-style"}>Tours</li></a>
+                <a href="" className='a-nav'><li className={"li-style"}>Contacts</li></a>
             </ul>
         </nav>
     )
