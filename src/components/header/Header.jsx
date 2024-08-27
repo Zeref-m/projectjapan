@@ -3,8 +3,7 @@ import Navigation from '../navigation/Navigation';
 
 export default function () {
     return (
-        <div className="header">
-            <Navigation />
+        <section id='header' className="header">
             <div className='flex'>
                 <div className="circle">
                     <h1 className="master-text text-white">TOURS TO</h1>
@@ -13,11 +12,20 @@ export default function () {
                 <div className='slave-text'>
                     <div>
                         <p>all educational tours in <br></br> Japan from studio arigami</p>
+                        <div>
+                            <button className="button">view tours</button>
+                        </div>
                     </div>
+                </div>
+                <div className="icones">
+                    <img className='icone' src="/telegram.png" alt="" />
+                    <img className='icone' src="/instagram.png" alt="" />
+                    <img className='icone' src="/whatsap.png" alt="" />
                 </div>
                 
             </div>
+            <Navigation />
             
-        </div>
+        </section>
     )
 }

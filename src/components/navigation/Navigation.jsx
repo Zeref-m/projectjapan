@@ -6,9 +6,9 @@ export default function () {
         <nav id="my-nav" className="">
             <ul className="nav-flex">
                 <a href="" className='a-nav'><li className={"li-style"}>Gallery</li></a>
-                <a href="" className='a-nav'><li className={"li-style"}>About us</li></a>
-                <a href="" className='a-nav'><li className={"li-style"}>Home</li></a>
-                <a href="" className='a-nav'><li className={"li-style"}>Tours</li></a>
+                <a href="#about_us" className='a-nav'><li className={"li-style"}>About us</li></a>
+                <a href="#header" className='a-nav'><li className={"li-style"}>Home</li></a>
+                <a href="#gallery" className='a-nav'><li className={"li-style"}>Tours</li></a>
                 <a href="" className='a-nav'><li className={"li-style"}>Contacts</li></a>
             </ul>
         </nav>

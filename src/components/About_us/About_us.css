@@ -15,9 +15,18 @@
     font-size: 45px;
     font-weight: 700;
     color:white;
-}
+}           
 .about-p{
     font-size: 35px;
     font-weight: 700;
     color: white;
+}
+.relative{
+    position: relative;
+    height: 100%;
+}
+.absalut{
+    position: absolute;
+    bottom: 5em;
+    left: 4em;
 }

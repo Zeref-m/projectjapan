@@ -1,8 +1,13 @@
+
 #my-nav {
     position: fixed;
     top: 0;
 }
+html{
+    scroll-behavior: smooth;
+}
 nav{
+    z-index: 10;
     width: 100%;
 }
 
@@ -10,6 +15,11 @@ nav{
     list-style: none;
     font-weight: 600;
     font-size: 20px;
+    transition: 0.3s;
+}
+.li-style:hover {
+    transform:scale(1.05);
+    color:rgb(211, 47, 47)
 }
 
 .a-nav {

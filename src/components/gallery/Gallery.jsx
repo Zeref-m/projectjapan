@@ -62,8 +62,10 @@ export default function () {
             </div>
 
             <div className="d-flex more-tours">
-                <div><a className="a-in-block" href=""><h1>more tours</h1></a></div>
-                <div><img src="" alt="" /></div>
+                <div><a className="a-in-block" href=""><p className="more-tours-text">more tours</p></a></div>
+                <div className="d-flex align-items-center">
+                    <div><img className="arrow" src="/arrow-right.png" alt="" /></div>
+                </div>
             </div>
         </section>
     )

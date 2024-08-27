@@ -17,6 +17,7 @@
     "react": "~canary",
     "react-dom": "~canary",
     "sass": "^1.77.8",
+    "yarn": "^1.22.22",
     "zod": "^3.23.8"
   },
   "devDependencies": {

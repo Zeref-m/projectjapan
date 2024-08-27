@@ -17,18 +17,43 @@
     min-height: 100vh;
     position: relative;
 }
+.button{
+    background-color: white;
+    color: black;
+    width: 159px;
+    height: 55px;
+    border-radius: 15px;
+    font-size: 24px;
+    border: none;
+}
+.icone{
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0 0.5em;
+}
+.icones{
+    position: absolute;
+    width: 200px;
+    right: 4em;
+    bottom: 4em;
+}
 .slave-text{
     position: absolute;
-    left: 5em;
-    bottom: 4em;
+    left: 2em;
+    bottom: 2em;
     color: white;
     font-size: 36px;
     font-weight: 600;
 }
+.master-text{
+    font-size: 96px;
+    font-weight: 800;
+
+}
 
 .color-red {
     color: #C70000;
-    font-size: 160px;
+    font-size: 110px;
     font-weight: 800;
 }
 
@@ -37,11 +62,7 @@
     position: absolute;
 }
 
-.master-text{
-    font-size: 96px;
-    font-weight: 800;
 
-}
 
 .circle{
     height: 530px;
