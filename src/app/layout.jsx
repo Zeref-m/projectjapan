@@ -1,9 +1,12 @@
 import "bootstrap/scss/bootstrap.scss";
+import BootstrapProvider from "../providers/bootstrap";
 
-export default function RootLayout({children}) {
+export default function RootLayout({ children }) {
     return (
         <html>
-        <body>{children}</body>
+            <body>
+                <BootstrapProvider>{children}</BootstrapProvider>
+            </body>
         </html>
-    )
+    );
 }

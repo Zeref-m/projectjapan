@@ -1,7 +1,9 @@
 
-#my-nav {
+.my-nav {
     position: fixed;
     top: 0;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
 }
 html{
     scroll-behavior: smooth;
@@ -32,4 +34,11 @@ nav{
     justify-content: space-around;
     padding: 1em 0;
     margin: 0;
+}
+.registration{
+    width: 150px;
+    height: 60px;
+    background-color: #fff;
+    color: black;
+    text-align: center;
 }
