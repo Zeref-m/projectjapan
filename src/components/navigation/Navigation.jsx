@@ -1,6 +1,7 @@
 import "./Navigation.css";
+import {getUser} from "../../app/lib/dal.js";
 
-export default function () {
+export default async function () {
     return (
         <nav className="my-nav">
             <div className="logo"></div>
@@ -40,6 +41,7 @@ export default function () {
                 >
                     registration
                 </div>
+                <div>{await getUser()}</div>
                 <div className="profile"></div>
             </div>
         </nav>
