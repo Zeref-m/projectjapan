@@ -1,47 +1,31 @@
-import "./Navigation.css";
-import {getUser} from "../../app/lib/dal.js";
+"use client";
 
-export default async function () {
+import "./Navigation.css";
+// import {getUser} from "@/lib/dal.ts";
+import Link from "next/link.js";
+import {useModalContext} from "@/providers/modal";
+
+export default function () {
+    const {setShow} = useModalContext();
+    function handleShow () {
+        setShow(true);
+    }
     return (
         <nav className="my-nav">
             <div className="logo"></div>
             <ul className="nav-flex">
-                <a href="" className="a-nav">
-                    <li className={"li-style"}>Gallery</li>
-                </a>
-                <a href="#about_us" className="a-nav">
-                    <li className={"li-style"}>About us</li>
-                </a>
-                <a href="#header" className="a-nav">
-                    <li className={"li-style"}>Home</li>
-                </a>
-                <a href="#gallery" className="a-nav">
-                    <li className={"li-style"}>Tours</li>
-                </a>
-                {/* <a href="" className="a-nav"> */}
-                {/* <li className={"li-style"} > */}
-                <button
-                    type="button"
-                    className={"btn btn-primary"}
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                >
-                    Launch demo modal
-                </button>
-
-                {/* </li> */}
-                {/* </a> */}
+                <li className="li-style"><Link href="/" className="a-nav">Gallery</Link></li>
+                <li className="li-style"><Link href="#header" className="a-nav">Home</Link></li>
+                <li className="li-style"><Link href="#about_us" className="a-nav">About us</Link></li>
+                <li className="li-style"><Link href="#gallery" className="a-nav">Tours</Link></li>
+                <li className="li-style">
+                    <button type="button" className="btn btn-outline-secondary" onClick={handleShow}>
+                        Registration
+                    </button>
+                </li>
             </ul>
             <div>
-                <div
-                    type="button"
-                    className="registration"
-                    data-bs-toggle="modal"
-                    data-bs-target="#registrationModal"
-                >
-                    registration
-                </div>
-                <div>{await getUser()}</div>
+                {/*<div>User: {await getUser()}</div>*/}
                 <div className="profile"></div>
             </div>
         </nav>

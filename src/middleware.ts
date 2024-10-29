@@ -1,39 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { decrypt } from 'app/lib/session'
-import { cookies } from 'next/headers'
+import {verifySession} from "@/lib/dal";
 
-// 1. Specify protected and public routes
-const protectedRoutes = ['/profile']
-const publicRoutes = ['/login', '/signup', '/']
+// 1. Определяем защищенные маршруты
+const protectedRoutes = ['/admin'];
 
 export default async function middleware(req: NextRequest) {
-    // 2. Check if the current route is protected or public
+    // 2. Проверяем доступность маршрута
     const path = req.nextUrl.pathname
     const isProtectedRoute = protectedRoutes.includes(path)
-    const isPublicRoute = publicRoutes.includes(path)
 
-    // 3. Decrypt the session from the cookie
-    const cookie = cookies().get('session')?.value
-    const session = await decrypt(cookie)
+    // 3. Получаем идентификатор пользователя из cookie
+    console.log(req.nextUrl.pathname)
+    const userId = verifySession();
 
-    // 4. Redirect to /login if the user is not authenticated
-    if (isProtectedRoute && !session?.userId) {
+    // 4. Если пользователь не авторизован - перенаправляем на страницу входа
+    if (isProtectedRoute && !userId) {
         return NextResponse.redirect(new URL('/login', req.nextUrl))
     }
 
-    // 5. Redirect to /dashboard if the user is authenticated
-    if (
-        isPublicRoute &&
-        session?.userId &&
-        !req.nextUrl.pathname.startsWith('/profile')
-    ) {
-        return NextResponse.redirect(new URL('/profile', req.nextUrl))
-    }
-
+    // 5. Иначе передаем обработку следующему middleware
     return NextResponse.next()
 }
 
-// Routes Middleware should not run on
+// Определяем шаблон для запуска middleware
 export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
+    matcher: [
+        /*
+         * Match all request paths except for the ones starting with:
+         * - api (API routes)
+         * - _next/static (static files)
+         * - _next/image (image optimization files)
+         * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+         */
+        '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.png$|.*\\.jpg$|.*\\.ico$).*)',
+    ],
 }
