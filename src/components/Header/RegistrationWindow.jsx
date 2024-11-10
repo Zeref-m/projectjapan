@@ -24,8 +24,8 @@ export default function () {
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
-                    Save Changes
+                <Button type="submit" variant="primary" form="regForm" onClick={handleClose}>
+                    Sign Up
                 </Button>
             </Modal.Footer>
         </Modal>

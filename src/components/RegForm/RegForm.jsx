@@ -6,7 +6,7 @@ import {useFormState} from 'react-dom';
 export default function () {
     const [state, submitAction] = useFormState(signup, {error: null});
     return(
-        <form action={submitAction}>
+        <form id="regForm" action={submitAction}>
             <div>
                 <label htmlFor="name">Login</label>
                 <input id="name" name="login" placeholder="Login" />
@@ -22,7 +22,7 @@ export default function () {
                 <input id="password" name="password" type="password" />
                 {state?.errors?.password && <span>Failed: {state.errors.password}</span>}
             </div>
-            <button type="submit">Sign Up</button>
+
         </form>
     )
 }

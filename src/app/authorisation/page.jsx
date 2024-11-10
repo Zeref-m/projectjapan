@@ -1,9 +1,9 @@
 "use client";
-import { signin } from '../../actions/auth'
+import { login } from '@/actions/auth';
 import {useFormState} from 'react-dom';
 
 export default function () {
-    const [state, submitAction] = useFormState(signin, {error: null});
+    const [state, submitAction] = useFormState(login, {error: null});
      // TODO: Добавить вывод ошибок
     return(
         <form action={submitAction}>
