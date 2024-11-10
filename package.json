@@ -38,5 +38,10 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2",
     "vite": "^5.4.1"
-  }
+  },
+  "description": "### Generating a secret key",
+  "main": "eslint.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
