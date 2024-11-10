@@ -2,7 +2,7 @@
 import {PrismaClient} from "@prisma/client";
 import {SignUpSchema} from "../lib/definitions.js";
 import {redirect} from 'next/navigation';
-import { createSession, deleteSession } from '../lib/session.js'
+import { createSession, deleteSession } from '@/lib/session.ts'
 
 const prisma = new PrismaClient();
 
