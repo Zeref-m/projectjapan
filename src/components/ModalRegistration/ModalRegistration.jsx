@@ -2,7 +2,7 @@
 
 import {Modal, Button} from "react-bootstrap";
 import {useModalContext} from "@/providers/modal.js";
-import RegForm from "@/components/RegForm"
+import RegForm from "@/components/RegForm/RegForm.jsx"
 
 
 export default function () {

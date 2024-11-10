@@ -11,6 +11,10 @@ This command generates a 32-character random string that you can use as your sec
 SESSION_SECRET=your_secret_key
 ```
 
+### Initialize your project modules
+
+Run `npm i`
+
 ### Initialize prisma client
 
 Run `prisma generate` for first time
