@@ -1,5 +1,6 @@
 import './Header.css';
-import Navigation from '../navigation/Navigation'; 
+import Navigation from '../navigation/Navigation';
+import ModalRegistration from "@/components/ModalRegistration/ModalRegistration";
 
 export default function () {
     return (
@@ -11,7 +12,7 @@ export default function () {
                 </div>
                 <div className='slave-text'>
                     <div>
-                        <p>all educational tours in <br></br> Japan from studio arigami</p>
+                        <p>all educational tours in <br></br> Japan from studio origami</p>
                         <div>
                             <button className="button">view tours</button>
                         </div>
@@ -25,7 +26,7 @@ export default function () {
                 
             </div>
             <Navigation />
-            
+            <ModalRegistration />
         </section>
     )
 }

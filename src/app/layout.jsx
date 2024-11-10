@@ -1,11 +1,11 @@
 import "bootstrap/scss/bootstrap.scss";
-import BootstrapProvider from "../providers/bootstrap";
+import {ModalProvider} from "@/providers/modal.js";
 
 export default function RootLayout({ children }) {
     return (
         <html>
             <body>
-                <BootstrapProvider>{children}</BootstrapProvider>
+                <ModalProvider>{children}</ModalProvider>
             </body>
         </html>
     );

@@ -1,5 +1,5 @@
-
 "use client";
+
 import "./Gallery.css";
 import TourBlock from "./tour-block";
 import { useInView } from "react-intersection-observer";

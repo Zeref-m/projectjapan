@@ -1,5 +1,5 @@
 "use client";
-import { signin } from '../actions/auth'
+import { signin } from '../../actions/auth'
 import {useFormState} from 'react-dom';
 
 export default function () {

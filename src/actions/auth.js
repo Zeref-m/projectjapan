@@ -2,17 +2,18 @@
 import {PrismaClient} from "@prisma/client";
 import {SignUpSchema} from "../lib/definitions.js";
 import {redirect} from 'next/navigation';
-import { createSession, deleteSession } from '../lib/session'
+import { createSession, deleteSession } from '../lib/session.js'
 
 const prisma = new PrismaClient();
 
 export async function signup(state, formData) {
 
+    // Получаем регистрационные данные из формы
     const login = formData.get("login");
     const email = formData.get("email");
     const password = formData.get("password");
 
-    // 1. Validate form fields
+    // 1. Проверяем полученные данные
     const validatedFields = SignUpSchema.safeParse({
         login,
         email,
@@ -21,13 +22,13 @@ export async function signup(state, formData) {
 
     // 2. Если есть ошибки
     if (!validatedFields.success) {
-        // console.log(validatedFields.error.flatten().fieldErrors)
+        // Отправляем сообщения об ошибках назад на форму
         return {
             errors: validatedFields.error.flatten().fieldErrors,
         }
     }
 
-    // 3. Insert the user into the database
+    // 3. Если ошибок нет - вносим данные пользователя в базу данных
     // TODO: Хешировать пароли перед записью в БД
     const user = await prisma.user.create({
         data: {
@@ -38,10 +39,10 @@ export async function signup(state, formData) {
         }
     })
 
-    // 4. Create user session
+    // 4. Сохраняем сессию пользователя
     await createSession(user.id)
 
-    // 5. Redirect user
+    // 5. Перенаправляем на главную
     redirect('/')
 }
 
