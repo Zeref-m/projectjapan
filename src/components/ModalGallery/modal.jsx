@@ -1,6 +1,6 @@
 // src/components/Modal.js
 import React from "react";
-import "./Modal.css"; // Подключаем стили для модального окна
+import "./modal.css"; // Подключаем стили для модального окна
 
 const Modal = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;

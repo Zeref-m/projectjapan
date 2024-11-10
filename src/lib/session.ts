@@ -1,7 +1,6 @@
-import "server-only";
+"use server";
 import {SignJWT, jwtVerify} from 'jose';
 import {cookies} from 'next/headers'
-import {verifySession} from "@/lib/dal";
 
 const secretKey = process.env.SESSION_SECRET;
 const encodedKey = new TextEncoder().encode(secretKey);
@@ -33,14 +32,14 @@ export async function createSession(userId) {
         httpOnly: true,
         secure: true,
         expires: expiresAt,
-        sameSite: 'lax',
+        sameSite: 'strict',
         path: '/',
     })
 }
 
 // Обновление сессии
 export async function updateSession() {
-    const userId = verifySession();
+    const userId = await verifySession();
     if (!userId) {
         return null
     }
@@ -49,6 +48,28 @@ export async function updateSession() {
 
 // Удаление сессии
 export async function deleteSession() {
+    const key: string = "session";
     const cookieStore = await cookies()
-    cookieStore.delete('session')
+    cookieStore.delete(key)
+}
+
+export const verifySession = async () => {
+    const cookieStore = await cookies();
+    const sessionJWToken = cookieStore.get('session')?.value;
+    if (!sessionJWToken) return null;
+    try {
+        const payload =  await decrypt(sessionJWToken)
+        if (!payload) {
+            return null;
+        }
+        if (payload.expiresAt < Date.now()) {
+            cookieStore.delete('session')
+            return null;
+        }
+        return payload.userId;
+    } catch (error) {
+        console.log('Failed to verify session');
+        console.log(error.message)
+        return null;
+    }
 }

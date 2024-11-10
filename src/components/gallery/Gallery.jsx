@@ -1,9 +1,10 @@
 "use client";
 
 import "./Gallery.css";
-import TourBlock from "./tour-block";
+import TourBlock from "@/components/TourBlock/TourBlock.jsx";
 import { useInView } from "react-intersection-observer";
-import Modal from "./components/Modal";
+import Modal from "@/components/ModalGallery/modal.jsx";
+import {useState} from "react";
 
 export default function () {
     const { ref, inView, entry } = useInView({

@@ -1,6 +1,6 @@
 import './Header.css';
-import Navigation from '../navigation/Navigation';
-import ModalRegistration from "@/components/ModalRegistration/ModalRegistration";
+import Navigation from './Navigation/Navigation';
+import ModalRegistration from "@/components/Header/RegistrationWindow";
 
 export default function () {
     return (
