@@ -1,9 +1,9 @@
 "use server";
 import {PrismaClient} from "@prisma/client";
-import {SignUpSchema} from "../lib/definitions.js";
+import {SignUpSchema} from "@/lib/definitions";
 import {redirect} from 'next/navigation';
-import { createSession, deleteSession } from '@/lib/session.ts'
-
+import {createSession, deleteSession, verifySession} from '@/lib/session';
+import bcrypt from "bcryptjs";
 const prisma = new PrismaClient();
 
 export async function signup(state, formData) {
@@ -27,14 +27,32 @@ export async function signup(state, formData) {
             errors: validatedFields.error.flatten().fieldErrors,
         }
     }
+    // 3. Проверяем, что пользователя нет в БД
+    // Выбрать, с помощью prisma, пользователя с именем login
+    let user = await prisma.user.findUnique({
+        where: {email},
+    });
+    // Если такой есть - отправить ошибку
+    if (user) {
+        return {
+            errors: {
+                "email": [
+                    "This email is already in use"
+                ]
+            },
+        }
+    }
 
-    // 3. Если ошибок нет - вносим данные пользователя в базу данных
-    // TODO: Хешировать пароли перед записью в БД
-    const user = await prisma.user.create({
+
+    // 4. Если ошибок нет - вносим данные пользователя в базу данных
+    // Хешируем пароли перед записью в БД
+    const hashedPassword = await bcrypt.hash(password, 10);
+    // Создаем нового пользователя с хэшированным паролем
+    user = await prisma.user.create({
         data: {
             login: login,
             email: email,
-            password: password,
+            password: hashedPassword,
 
         }
     })
@@ -43,10 +61,11 @@ export async function signup(state, formData) {
     await createSession(user.id)
 
     // 5. Перенаправляем на главную
+    // TODO: закрывать модальное окно
     redirect('/')
 }
 
-export async function signin(state, formData) {
+export async function login(state, formData) {
     const login = formData.get("login");
     const password = formData.get("password");
 
@@ -58,14 +77,13 @@ export async function signin(state, formData) {
 
     // 2. Если есть ошибки
     if (!validatedFields.success) {
-        // console.log(validatedFields.error.flatten().fieldErrors)
         return {
             errors: validatedFields.error.flatten().fieldErrors,
         }
     }
 
     // Тут проверяем что пользователь есть в базе
-    const  user = await prisma.user.findUnique({where: {login, password}});
+    const user = await prisma.user.findUnique({where: {login, password}});
     if (!user) {
         return {
             errors: validatedFields.error.flatten().fieldErrors,
@@ -80,6 +98,26 @@ export async function signin(state, formData) {
 }
 
 export async function logout() {
-    deleteSession()
-    redirect('/login')
+    await deleteSession()
+}
+
+export const getUser = async () => {
+    const userId = await verifySession();
+    if (!userId) return null;
+    try {
+        return await prisma.user.findUnique({
+            where: {
+                id: userId
+            },
+            select: {
+                id: true,
+                login: true,
+                email: true,
+            },
+        })
+    } catch (error) {
+        console.log('Failed to fetch user');
+        console.log(error);
+        return null;
+    }
 }

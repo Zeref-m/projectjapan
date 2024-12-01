@@ -1,16 +1,20 @@
 # My exam site work
 
-### Generating a secret key
+#### Для запуска проект последовательно выполнить:
 
-`openssl rand -base64 32`
+- Создать ключ шифрования. Для этого выполнить в терминале или командной строке `openssl rand -base64 32` 
 
-This command generates a 32-character random string that you can use as your secret key and store in your environment variables file:
-`.env`
+  Открыть файл `.env` и добавить/заменить
 
 ```
-SESSION_SECRET=your_secret_key
+SESSION_SECRET=<тут вставить сгенерированный ключ>
 ```
 
-### Initialize prisma client
+- Установить все зависимости: `npm i`
+- Убедиться, что база данных запущена. Настройки подключения смотреть/править в файле `.env`. 
 
-Run `prisma generate` for first time
+  Если на компьютере не установлена СУБД, поднять контейнер: `docker compose up`  
+
+- Инициализировать клиент *Призмы*: `prisma generate` 
+
+- Применить миграции к базе данных: `prisma migrate deploy`
