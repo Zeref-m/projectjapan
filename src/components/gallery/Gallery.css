@@ -29,6 +29,9 @@
     width: 300px;
     height: 410px;
 }
+.kioto-block{
+    background-image: url(/public/vertical-shot-hokanji-temple-yasaka-no-tou-kyoto-japan_665346-10411.avif);
+}
 .tour-blocks {
     display: flex;
     justify-content: space-between;

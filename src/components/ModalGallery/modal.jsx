@@ -1,20 +1,32 @@
-// src/components/Modal.js
-import React from "react";
-import "./modal.css"; // Подключаем стили для модального окна
+"use client";
 
-const Modal = ({ isOpen, onClose, children }) => {
-    if (!isOpen) return null;
+import {Modal, Button} from "react-bootstrap";
+import GalleryContextProvider from "@/providers/GalleryContextProvider"
+import { useModalContext } from "@/providers/modal";
+
+export default function () {
+    const {show, setShow} = useModalContext();
+    function handleClose () {
+        setShow(false);
+    }
 
     return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <button className="modal-close" onClick={onClose}>
-                    &times;
-                </button>
-                {children}
-            </div>
-        </div>
+        <Modal show={show} onHide={handleClose}>
+            
+            <Modal.Header closeButton>
+                <Modal.Title></Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                {/* < /> */}
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+                <Button type="submit" variant="primary" form="regForm" onClick={handleClose}>
+                    Sign Up
+                </Button>
+            </Modal.Footer>
+        </Modal>
     );
-};
-
-export default Modal;
+}

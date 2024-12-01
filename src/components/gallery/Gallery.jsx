@@ -5,6 +5,7 @@ import TourBlock from "@/components/TourBlock/TourBlock.jsx";
 import { useInView } from "react-intersection-observer";
 import Modal from "@/components/ModalGallery/modal.jsx";
 import {useState} from "react";
+import context from "react-bootstrap/esm/AccordionContext";
 
 export default function () {
     const { ref, inView, entry } = useInView({
@@ -15,9 +16,11 @@ export default function () {
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
+    let {setShow} = useContext(context)
+
     return (
         <section ref={ref} id="gallery" className="gallery">
-            <div className="text-center w-100 main-text">
+            <div className="text-center w-100 main-text" onClick={}>
                 <h1>the most popular tours</h1>
                 {inView}
             </div>
