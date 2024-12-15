@@ -4,7 +4,7 @@ import "./Gallery.css";
 import TourBlock from "@/components/TourBlock/TourBlock.jsx";
 import { useInView } from "react-intersection-observer";
 import Modal from "@/components/ModalGallery/modal.jsx";
-import {useState} from "react";
+import {useState, useContext} from "react";
 import context from "react-bootstrap/esm/AccordionContext";
 
 export default function () {
@@ -17,26 +17,25 @@ export default function () {
     const closeModal = () => setIsModalOpen(false);
 
     let {setShow} = useContext(context)
-
     return (
         <section ref={ref} id="gallery" className="gallery">
-            <div className="text-center w-100 main-text" onClick={}>
+            <div className="text-center w-100 main-text">
                 <h1>the most popular tours</h1>
                 {inView}
             </div>
 
             <div className={inView ? "tour-blocks" : "d-none"}>
-                <TourBlock className="tokio-block" onClick={openModal}>
+                <TourBlock className="tokio-block" onClick={() => setShow(true)}>
                     <p className="block-text">TOUR 01</p>
                     <p className="block-text text-red">TOKIO</p>
                 </TourBlock>
 
-                <TourBlock className="kyoto-block" onClick={openModal}>
+                <TourBlock className="kyoto-block" onClick={() => setShow(true)}>
                     <p className="block-text">TOUR 02</p>
                     <p className="block-text text-red">KYOTO</p>
                 </TourBlock>
 
-                <TourBlock className="fuji-block" onClick={openModal}>
+                <TourBlock className="fuji-block" onClick={() => setShow(true)}>
                     <p className=" block-text">TOUR 03</p>
                     <p className="block-text text-red">MOUNT FUJIYAMA</p>
                 </TourBlock>
@@ -44,15 +43,7 @@ export default function () {
                     <p className=" block-text">TOUR 04</p>
                     <p className="block-text text-red">KAMAKURA</p>
                 </TourBlock>
-                <Modal isOpen={isModalOpen} onClose={closeModal}>
-                    <div d-flex>
-                        <div className='product-card'></div>
-                        <h1></h1>
-                        <p></p>
-                        <button>book a tour</button>
-                    </div>
-                    
-                </Modal>
+                
             </div>
             <div className="d-flex more-tours">
                 <div>
