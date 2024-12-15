@@ -1,6 +1,7 @@
 import './Header.css';
 import Navigation from './Navigation/Navigation';
 import {RegistrationProvider} from "@/providers/RegistrationContextProvider";
+import RegistrationWindow from "@/components/Header/RegistrationWindow";
 
 export default function () {
     return (
@@ -27,6 +28,7 @@ export default function () {
                 </div>
                 <Navigation/>
             </section>
+        // <RegistrationWindow/>
         // </RegistrationProvider>
     )
 }

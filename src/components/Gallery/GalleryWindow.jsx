@@ -16,14 +16,16 @@ export default function () {
                 <Modal.Title></Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {/* < /> */}
+                <h1>Tour registration window</h1>
+                <input placeholder={"phone number"}></input>
+
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
                 <Button type="submit" variant="primary" form="regForm" onClick={handleClose}>
-                    Sign Up
+                    Send result
                 </Button>
             </Modal.Footer>
         </Modal>
