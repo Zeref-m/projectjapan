@@ -1,12 +1,12 @@
 "use client";
 
 import {Modal, Button} from "react-bootstrap";
-import {useModalContext} from "@/providers/modal.js";
+import {useRegistrationContext} from "@/providers/RegistrationContextProvider";
 import RegForm from "@/components/RegForm/RegForm.jsx"
 
 
 export default function () {
-    const {show, setShow} = useModalContext();
+    const {show, setShow} = useRegistrationContext();
     function handleClose () {
         setShow(false);
     }

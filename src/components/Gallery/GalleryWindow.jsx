@@ -1,11 +1,10 @@
 "use client";
 
 import {Modal, Button} from "react-bootstrap";
-import GalleryContextProvider from "@/providers/GalleryContextProvider"
-import { useModalContext } from "@/providers/modal";
+import {useGalleryContext} from "@/providers/GalleryContextProvider";
 
 export default function () {
-    const {show, setShow} = useModalContext();
+    const {show, setShow} = useGalleryContext();
     function handleClose () {
         setShow(false);
     }
@@ -17,14 +16,16 @@ export default function () {
                 <Modal.Title></Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {/* < /> */}
+                <h1>Tour registration window</h1>
+                <input placeholder={"phone number"}></input>
+
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
                 <Button type="submit" variant="primary" form="regForm" onClick={handleClose}>
-                    Sign Up
+                    Send result
                 </Button>
             </Modal.Footer>
         </Modal>

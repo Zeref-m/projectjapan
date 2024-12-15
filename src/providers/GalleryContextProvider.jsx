@@ -2,13 +2,13 @@
 
 import React, {createContext, useContext, useState} from "react";
 
-const ModalContext = createContext({
+const GalleryContext = createContext({
     show: false, setShow: (show) => {}
 });
 
-export const ModalProvider = ({children}) => {
+export const GalleryProvider = ({children}) => {
     const [show, setShow] = useState(false);
-    return (<ModalContext.Provider value={{show, setShow}}>{children}</ModalContext.Provider>);
+    return (<GalleryContext.Provider value={{show, setShow}}>{children}</GalleryContext.Provider>);
 }
 
-export const useModalContext = () => useContext(ModalContext);
+export const useGalleryContext = () => useContext(GalleryContext);
