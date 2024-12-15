@@ -1,11 +1,10 @@
 "use client";
 
 import {Modal, Button} from "react-bootstrap";
-import GalleryContextProvider from "@/providers/GalleryContextProvider"
-import { useModalContext } from "@/providers/modal";
+import {useGalleryContext} from "@/providers/GalleryContextProvider";
 
 export default function () {
-    const {show, setShow} = useModalContext();
+    const {show, setShow} = useGalleryContext();
     function handleClose () {
         setShow(false);
     }
