@@ -10,10 +10,10 @@ import {RegistrationProvider} from "@/providers/RegistrationContextProvider";
 export default function Page() {
     return (
         <div>
-            {/*<RegistrationProvider>*/}
+            <RegistrationProvider>
                 <Header/>
-                {/*<RegistrationWindow/>*/}
-            {/*</RegistrationProvider>*/}
+                <RegistrationWindow/>
+            </RegistrationProvider>
             <GalleryProvider>
                 <Gallery/>
                 <GalleryWindow/>

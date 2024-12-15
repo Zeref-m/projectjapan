@@ -12,16 +12,15 @@ export default function () {
     });
     const {setShow} = useGalleryContext();
     const openModal = () => setShow(true);
-    const closeModal = () => setShow(false);
 
     const fromDbData = [
         {id: 1, title: "Tour 01", city: "TOKIO"},
-        {id: 1, title: "Tour 02", city: "KYOTO"},
-        {id: 1, title: "Tour 03", city: "MOUNT FUJIYAMA"},
-        {id: 1, title: "Tour 04", city: "KAMAKURA"},
+        {id: 2, title: "Tour 02", city: "KYOTO"},
+        {id: 3, title: "Tour 03", city: "MOUNT FUJIYAMA"},
+        {id: 4, title: "Tour 04", city: "KAMAKURA"},
     ];
 
-    const cards = fromDbData.map(card => <TourBlock className="tokio-block" header={card.title} text={card.city}/>);
+    const cards = fromDbData.map(card => <TourBlock onClick={openModal} key={card.id} className="tokio-block" header={card.title} text={card.city}/>);
 
     return (
         <section ref={ref} id="gallery" className="gallery">
