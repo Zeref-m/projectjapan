@@ -2,14 +2,11 @@
 
 import React, {createContext, useContext, useState} from "react";
 
-const RegistrationContext = createContext({
-    show: false, setShow: (show) => {
-    }
-});
+const RegistrationContext = createContext({show: false, setShow: () => {}});
 
-export function RegistrationProvider({children}) {
+export const RegistrationProvider = ({children}) => {
     const [show, setShow] = useState(false);
-    return (<RegistrationContext.provider value={{show, setShow}}>{children}</RegistrationContext.provider>);
+    return (<RegistrationContext.Provider value={{show, setShow}}>{children}</RegistrationContext.Provider>);
 }
 
 export const useRegistrationContext = () => useContext(RegistrationContext);
