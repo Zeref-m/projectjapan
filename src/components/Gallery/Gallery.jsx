@@ -14,10 +14,10 @@ export default function () {
     const openModal = () => setShow(true);
 
     const fromDbData = [
-        {id: 1, title: "Tour 01", city: "TOKIO"},
-        {id: 2, title: "Tour 02", city: "KYOTO"},
-        {id: 3, title: "Tour 03", city: "MOUNT FUJIYAMA"},
-        {id: 4, title: "Tour 04", city: "KAMAKURA"},
+        { id: 1, title: "Tour 01", city: "TOKIO", image: "./Tokio_block.jpg" },
+        { id: 2, title: "Tour 02", city: "KYOTO", image: "./Kyoto_block.avif" },
+        { id: 3, title: "Tour 03", city: "MOUNT FUJIYAMA", image: "./Fujiyama_block.jpg" },
+        { id: 4, title: "Tour 04", city: "KAMAKURA", image: "./Kamakura_block.jpg" },
     ];
 
     const cards = fromDbData.map(card => <TourBlock onClick={openModal} key={card.id} className="tokio-block" header={card.title} text={card.city}/>);
@@ -35,7 +35,7 @@ export default function () {
             <div className="d-flex more-tours">
                 <div>
                     <a className="a-in-block" href="">
-                        <p className="more-tours-text">more tours</p>
+                        <p style={{fontSize:'50px'}} className="more-tours-text">more tours</p>
                     </a>
                 </div>
                 <div className="d-flex align-items-center">

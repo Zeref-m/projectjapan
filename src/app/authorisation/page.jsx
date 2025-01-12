@@ -3,8 +3,7 @@ import { login } from '@/actions/auth';
 import {useFormState} from 'react-dom';
 
 export default function () {
-    const [state, submitAction] = useFormState(login, {error: null});
-     // TODO: Добавить вывод ошибок
+    const [state, submitAction] = useFormState(login, {error: null});я
     return(
         <form action={submitAction}>
             <div>
