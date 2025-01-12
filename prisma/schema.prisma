@@ -12,7 +12,17 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-
+model Tour {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  duration    Int
+  price       Float
+  city        String
+  image       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
 model User {
     id Int @id @default(autoincrement())
     email String @unique

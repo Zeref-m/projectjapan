@@ -1,9 +1,10 @@
 "use server";
 import {PrismaClient} from "@prisma/client";
-import {SignUpSchema} from "@/lib/definitions";
+import {LoginSchema, SignUpSchema} from "@/lib/definitions";
 import {redirect} from 'next/navigation';
 import {createSession, deleteSession, verifySession} from '@/lib/session';
 import bcrypt from "bcryptjs";
+
 const prisma = new PrismaClient();
 
 export async function signup(state, formData) {
@@ -66,14 +67,11 @@ export async function signup(state, formData) {
 }
 
 export async function login(state, formData) {
-    const login = formData.get("login");
+    const email = formData.get("email");
     const password = formData.get("password");
 
     // 1. Validate form fields
-    const validatedFields = SignUpSchema.safeParse({
-        login,
-        password,
-    });
+    const validatedFields = LoginSchema.safeParse({email, password});
 
     // 2. Если есть ошибки
     if (!validatedFields.success) {
@@ -83,7 +81,7 @@ export async function login(state, formData) {
     }
 
     // Тут проверяем что пользователь есть в базе
-    const user = await prisma.user.findUnique({where: {login, password}});
+    const user = await prisma.user.findUnique({where: {email, password}});
     if (!user) {
         return {
             errors: validatedFields.error.flatten().fieldErrors,
