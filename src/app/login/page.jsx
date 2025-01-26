@@ -3,12 +3,12 @@ import { login } from '@/actions/auth';
 import {useFormState} from 'react-dom';
 
 export default function () {
-    const [state, submitAction] = useFormState(login, {error: null});я
+    const [state, submitAction] = useFormState(login, {error: null});
     return(
         <form action={submitAction}>
             <div>
-                <label htmlFor="name">Login</label>
-                <input id="name" name="login" placeholder="Login" />
+                <label htmlFor="name">Email</label>
+                <input id="name" name="email" placeholder="Email" />
             </div>
 
             <div>
@@ -16,7 +16,7 @@ export default function () {
                 <input id="password" name="password" type="password" />
             </div>
 
-            <button type="submit">Sign In</button>
+            <button >Sign In</button>
         </form>
     )
 }

@@ -1,6 +1,7 @@
 .about_us{
     height: 100vh;
     background-image: linear-gradient(180deg,black, transparent 20%, black), url(/bg.jpg);
+    background-size: cover;
 }
 .text-block{
     width: 800px;

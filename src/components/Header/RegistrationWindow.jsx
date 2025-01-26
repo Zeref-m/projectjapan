@@ -15,7 +15,7 @@ export default function () {
         <Modal show={show} onHide={handleClose}>
             
             <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title>Registration</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <RegForm />

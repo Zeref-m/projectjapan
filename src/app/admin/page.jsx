@@ -1,6 +1,6 @@
 export default function () {
-    return {
-
-    }
+    return (
+        <h1>Hello from the admin page</h1>
+    )
 
 }
